@@ -13,7 +13,7 @@ assignees: ''
 Briefly describe what this epic is about. What problem does it solve or goal does it aim to achieve?
 Example: This epic aims to redesign the onboarding flow to improve new user retention.
 
-### 🎯 Scope
+### 🧭 Scope
 What’s included in this epic? What’s not? Define boundaries and clarify what's in or out of scope.
 
 ### 📥 In scope:
