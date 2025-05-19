@@ -16,11 +16,11 @@ Example: This epic aims to redesign the onboarding flow to improve new user rete
 ### 🎯 Scope
 What’s included in this epic? What’s not? Define boundaries and clarify what's in or out of scope.
 
-### In scope:
+### 📥 In scope:
 - Redesign welcome screen
 - Add walkthrough tutorial
 
-### Out of scope:
+### ⛔ Out of scope:
 - Backend authentication changes
 
 ### 📦Deliverables
