@@ -7,7 +7,7 @@ labels: ''
 assignees: ''
 ---
 
-### 🎯 Goal
+## 🎯 Goal
 What is the specific outcome of this task?
 
 _Example: Implement the welcome screen layout in Flutter._
@@ -27,6 +27,7 @@ What conditions must be met for this task to be considered done?
 - [ ] Tested on both Android and iOS
 
 ### 🏁 Output
-What tangible result or artifact is expected?
+What are the concrete outcomes of this task? Optionally link to sub-issues.
 
-_Example: Merged PR, deployed feature, or documentation update_
+### 📰 References
+Any documentation, articles or blogs that may support this work
