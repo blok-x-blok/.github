@@ -1,0 +1,38 @@
+name: Terraform CI
+
+on:
+  pull_request:
+
+permissions:
+  ## allows the OIDC token to be injected so WIF can exchange it for a GCP access token
+  id-token: write
+  ## needed for actions/checkout to clone the repo
+  contents: read
+  ## caller permissions act as a ceiling for reusable workflows — without this the plan
+  ## job in terraform-ci.yml cannot post comments on the PR despite declaring it at job level
+  pull-requests: write
+
+jobs:
+  ci:
+    uses: blok-x-blok/.github-private/.github/workflows/terraform-ci.yml@main
+    with:
+      ## Required: JSON array of environments to validate and plan.
+      ## Each object must include name (string). Optionally include var_file (string).
+      ## var_file follows the same convention as the CD workflow — if omitted,
+      ## vars/<name>.tfvars is used automatically if it exists.
+      ##
+      ## Minimal (uses convention for var files):
+      ##   '[{"name":"prototype"},{"name":"production"}]'
+      ##
+      ## With explicit var file override on one environment:
+      ##   '[{"name":"prototype","var_file":"vars/custom.tfvars"},{"name":"production"}]'
+      environments: '[{"name":"prototype"},{"name":"production"}]'
+
+      ## Optional: directory containing the Terraform root configuration, relative to the repo root.
+      ## Default: . (repo root)
+      # working_directory: infra/terraform
+
+      ## Optional: pin a specific Terraform version (e.g. 1.9.0).
+      ## If omitted, reads from .terraform-version in working_directory; falls back to latest.
+      # terraform_version: 1.9.0
+    secrets: inherit

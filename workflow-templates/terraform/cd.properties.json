@@ -1,0 +1,6 @@
+{
+  "name": "Terraform CD",
+  "description": "Run Terraform plan and apply for a target environment using GCP Workload Identity Federation.",
+  "iconName": "terraform-cd",
+  "categories": ["terraform", "Continuous Delivery"]
+}

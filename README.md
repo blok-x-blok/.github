@@ -1,2 +1,6 @@
 # .github
-A repository for hosting common pull request and issue templates.
+A repository for hosting organisation templates that must be public. For example:
+
+- common pull request templates
+- issue templates
+- workflow templates

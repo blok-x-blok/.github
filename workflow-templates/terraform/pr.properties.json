@@ -1,0 +1,6 @@
+{
+  "name": "Terraform CI",
+  "description": "Validates Terraform configuration and plans each environment on pull requests, posting plan output as a PR comment.",
+  "iconName": "terraform-ci",
+  "categories": ["terraform", "Continuous Integration"]
+}
