@@ -1,0 +1,55 @@
+name: Terraform CD
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  ## allows the OIDC token to be injected so WIF can exchange it for a GCP access token
+  id-token: write
+  ## needed for actions/checkout to clone the repo
+  contents: read
+
+jobs:
+  prototype:
+    uses: blok-x-blok/.github-private/.github/workflows/terraform-cd.yml@main
+    with:
+      ## Required: target environment — prototype or production.
+      ## Production apply is restricted to the main branch; all other environments apply on any branch.
+      environment: prototype
+      ## Optional: directory containing the Terraform root configuration, relative to the repo root.
+      ## Default: . (repo root)
+      # working_directory: infra/terraform
+
+      ## Optional: pin a specific Terraform version (e.g. 1.9.0).
+      ## If omitted, reads from .terraform-version in working_directory; falls back to latest.
+      # terraform_version: 1.9.0
+
+      ## Optional: path to a .tfvars file relative to working_directory.
+      ## If omitted, vars/<environment>.tfvars is used automatically if it exists.
+      ## Set explicitly only if your var file does not follow that convention.
+      # var_file: vars/custom.tfvars
+    secrets: inherit
+
+  production:
+    needs: prototype
+    uses: blok-x-blok/.github-private/.github/workflows/terraform-cd.yml@main
+    with:
+      ## Required: target environment — prototype or production.
+      ## Production apply is restricted to the main branch; all other environments apply on any branch.
+      environment: production
+      ## Optional: directory containing the Terraform root configuration, relative to the repo root.
+      ## Default: . (repo root)
+      # working_directory: infra/terraform
+
+      ## Optional: pin a specific Terraform version (e.g. 1.9.0).
+      ## If omitted, reads from .terraform-version in working_directory; falls back to latest.
+      # terraform_version: 1.9.0
+
+      ## Optional: path to a .tfvars file relative to working_directory.
+      ## If omitted, vars/<environment>.tfvars is used automatically if it exists.
+      ## Set explicitly only if your var file does not follow that convention.
+      # var_file: vars/custom.tfvars
+    secrets: inherit
